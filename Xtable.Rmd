@@ -1,0 +1,28 @@
+---
+output: pdf_document
+---
+```{r, results = "asis", echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center", fig.show = 'asis'}
+library(xtable)
+
+variable_name_nhanes <- c('seqn', 'wtint2yr', 'wtmec2yr', 'sdmvpsu', 'sdmvstra', 'riagendr',
+                          'ridageyr', 'bmdbmic', 'whq030m', 'whq500', 'paq744', 'paq746',
+                          'paq750')
+
+variable_name_dataset <- c('id', 'int_wt', 'exam_wt', 'psu', 'stratum', 'gender', 
+                           'age', 'bmi', 'opinion_wt', 'action_wt', 'pe_yn', 'freq_pe',
+                           'enjoy_pe')
+description <- c('Respondent ID', 'Interview Sample Weights', 'Exam Sample Weights',
+                 'Masked Variance Pseudo PSU', 'Masked Variance Pseudo Strata','Gender',
+                 'Age When Completed Survey', 'Body Mass Index', 'Opinion of Own Weight',
+                 'What are you trying to do with your weight?', 'Do you have PE class?', 
+                 'How often do you have PE?', 'Do you enjoy PE?')
+table <- matrix(data = c(variable_name_nhanes, variable_name_dataset, description), 
+                nrow = 13  ,ncol = 3)
+
+colnames(table) <- c('Variable Name in Nhanes', 'Variable Name in Our Data', 
+                     'Variable Description')
+
+
+print(xtable(table), comment = getOption('xtable.comment', FALSE),
+      include.rownames = FALSE)
+```
