@@ -15,6 +15,13 @@ bmi_prop_tbl = round(prop.table(bmi_tbl), 5)
 summary(bmi_tbl, statistic = "F")
 svychisq(~freq_pe+bmi, nhanes_design, statistic = "F")
 
+#Proportion in Each Weight Category by Existence of PE
+svymean(~interaction(pe_yn, bmi), design = nhanes_design)
+bmi_tbl = svytable(~pe_yn+bmi, nhanes_design)
+bmi_prop_tbl = round(prop.table(bmi_tbl), 5)
+summary(bmi_tbl, statistic = "F")
+svychisq(~pe_yn+bmi, nhanes_design, statistic = "F")
+
 #Perceived and Actual Weight Category by Frequency of PE
 svymean(~interaction(freq_pe, bmi, opinion_wt), design = nhanes_design)
 perception_tbl = svytable(~freq_pe+correct_perception, nhanes_design)
@@ -22,4 +29,23 @@ perception_prop_tbl = round(prop.table(perception_tbl), 5)
 summary(perception_tbl, statistic = "F")
 svychisq(~freq_pe+correct_perception, nhanes_design, statistic = "F")
 
+#Perceived and Actual Weight Category by Existence of PE
+svymean(~interaction(pe_yn, bmi, opinion_wt), design = nhanes_design)
+perception_tbl = svytable(~pe_yn+correct_perception, nhanes_design)
+perception_prop_tbl = round(prop.table(perception_tbl), 5)
+summary(perception_tbl, statistic = "F")
+svychisq(~pe_yn+correct_perception, nhanes_design, statistic = "F")
 
+#Proportion in Each Weight Category by Enjoyment of PE
+svymean(~interaction(enjoy_pe, bmi), design = nhanes_design)
+bmi_tbl = svytable(~enjoy_pe+bmi, nhanes_design)
+bmi_prop_tbl = round(prop.table(bmi_tbl), 5)
+summary(bmi_tbl, statistic = "F")
+svychisq(~enjoy_pe+bmi, nhanes_design, statistic = "F")
+
+#Perceived and Actual Weight Category by Enjoyment of PE
+svymean(~interaction(enjoy_pe, bmi, opinion_wt), design = nhanes_design)
+perception_tbl = svytable(~enjoy_pe+correct_perception, nhanes_design)
+perception_prop_tbl = round(prop.table(perception_tbl), 5)
+summary(perception_tbl, statistic = "F")
+svychisq(~enjoy_pe+correct_perception, nhanes_design, statistic = "F")
