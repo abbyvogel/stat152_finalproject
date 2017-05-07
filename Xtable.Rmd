@@ -26,3 +26,76 @@ colnames(table) <- c('Variable Name in Nhanes', 'Variable Name in Our Data',
 print(xtable(table), comment = getOption('xtable.comment', FALSE),
       include.rownames = FALSE)
 ```
+
+Variable Names:
+BMI
+```{r, results = "asis", echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center", fig.show = 'asis'}
+factor <- c(1:4)
+label <-  c("underweight", "normal", "overweight", "obese")
+
+table_bmi <- matrix(data = c(factor, label), nrow = 4, ncol = 2)
+colnames(table_bmi) <- c('Original Value', 'Renamed Factor')
+print(xtable(table_bmi), comment = getOption('xtable.comment', FALSE),
+      include.rownames = FALSE)
+```
+
+opinion
+```{r, results = "asis", echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center", fig.show = 'asis'}
+
+factor(opinion_wt, levels = c(1,2,3,7,9), 
+                             labels = c("overweight", "underweight", "normal", 
+                                        "refused", "unsure")),
+factor <- c(1,2,3,7,9)
+label <-  c("overweight", "underweight", "normal", 
+                                        "refused", "unsure")
+
+table_opinion <- matrix(data = c(factor, label), nrow = 5, ncol = 2)
+colnames(table_opinion) <- c('Original Value', 'Renamed Factor')
+print(xtable(table_opinion), comment = getOption('xtable.comment', FALSE),
+      include.rownames = FALSE)
+```
+
+action
+```{r, results = "asis", echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center", fig.show = 'asis'}
+
+ action_wt = factor(action_wt, levels = c(1,2,3,4,7,9), 
+                            labels = c("lose", "gain", "maintain", 
+                                       "nothing", "refused", "unsure")),
+factor <- c(1,2,3,4,7,9)
+label <-  c("lose", "gain", "maintain", 
+                                       "nothing", "refused", "unsure")
+
+table_action <- matrix(data = c(factor, label), nrow = 6, ncol = 2)
+colnames(table_action) <- c('Original Value', 'Renamed Factor')
+print(xtable(table_action), comment = getOption('xtable.comment', FALSE),
+      include.rownames = FALSE)
+```
+
+PE
+```{r, results = "asis", echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center", fig.show = 'asis'}
+
+pe_yn = factor(pe_yn, levels = c(1,2,7,9), labels = c("yes", "no", "refused", "unsure"))
+factor <- c(1,2,7,9)
+label <-  c("yes", "no", "refused", "unsure")
+
+table_pe <- matrix(data = c(factor, label), nrow = 4, ncol = 2)
+colnames(table_pe) <- c('Original Value', 'Renamed Factor')
+print(xtable(table_pe), comment = getOption('xtable.comment', FALSE),
+      include.rownames = FALSE)
+```
+
+Enjoy PE
+```{r, results = "asis", echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center", fig.show = 'asis'}
+
+enjoy_pe = factor(enjoy_pe, levels = c(1,2,3,4,5,7,9), 
+                           labels = c("strongly agree", "agree", "neither agree nor disagree", 
+                                      "disagree", "strongly disagree", "refused", "unsure")
+factor <- c(1,2,3,4,5,7,9)
+label <-  c("strongly agree", "agree", "neither agree nor disagree", 
+                                      "disagree", "strongly disagree", "refused", "unsure")
+
+table_enjoy<- matrix(data = c(factor, label), nrow = 7, ncol = 2)
+colnames(table_enjoy) <- c('Original Value', 'Renamed Factor')
+print(xtable(table_enjoy), comment = getOption('xtable.comment', FALSE),
+      include.rownames = FALSE)
+```
